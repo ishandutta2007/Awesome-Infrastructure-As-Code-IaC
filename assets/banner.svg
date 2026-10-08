@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <!-- Glowing accent gradients -->
+    <linearGradient id="accent-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+
+    <linearGradient id="accent-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+
+    <!-- Card/Pill Gradients -->
+    <linearGradient id="card-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <style>
+    .title { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 42px; fill: #ffffff; }
+    .subtitle { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: 20px; fill: #94a3b8; }
+    .badge-text { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 13px; fill: #38bdf8; }
+    .node-text { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 12px; fill: #e2e8f0; }
+    
+    /* Subtle background dynamic animation */
+    @keyframes float-slow {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(1deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+    @keyframes pulse-glow {
+      0% { opacity: 0.3; }
+      50% { opacity: 0.7; }
+      100% { opacity: 0.3; }
+    }
+    @keyframes dash {
+      to { stroke-dashoffset: -40; }
+    }
+
+    .animated-bg-orb { animation: pulse-glow 6s infinite ease-in-out; }
+    .animated-float { animation: float-slow 8s infinite ease-in-out; }
+    .flow-line { stroke-dasharray: 8 8; animation: dash 3s linear infinite; }
+  </style>
+
+  <!-- Base Canvas -->
+  <rect width="1200" height="320" rx="16" fill="url(#bg-gradient)"/>
+  <rect width="1196" height="316" x="2" y="2" rx="14" fill="none" stroke="#334155" stroke-width="2"/>
+
+  <!-- Dynamic Glowing Background Orbs (Placed strictly in background behind elements) -->
+  <circle cx="150" cy="80" r="140" fill="#3b82f6" opacity="0.15" filter="url(#glow)" class="animated-bg-orb"/>
+  <circle cx="1050" cy="240" r="160" fill="#a855f7" opacity="0.15" filter="url(#glow)" class="animated-bg-orb"/>
+
+  <!-- Background Architecture Circuit Grid -->
+  <path d="M 100 240 L 300 240 L 350 280 L 850 280 L 900 240 L 1100 240" stroke="#1e293b" stroke-width="2" fill="none"/>
+  <path d="M 200 40 L 400 40 L 450 80 L 750 80 L 800 40 L 1000 40" stroke="#1e293b" stroke-width="2" fill="none"/>
+
+  <!-- Flow Diagrams at Bottom Right Side (Decorative Dynamic Aspect) -->
+  <g transform="translate(720, 165)" class="animated-float">
+    <!-- Connecting flow line -->
+    <path d="M 60 40 L 140 40 M 200 40 L 280 40" stroke="#38bdf8" stroke-width="2" class="flow-line"/>
+    
+    <!-- Step 1 Node -->
+    <rect x="0" y="15" width="80" height="50" rx="8" fill="url(#card-grad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="40" y="45" text-anchor="middle" class="node-text">Code</text>
+
+    <!-- Step 2 Node -->
+    <rect x="130" y="15" width="80" height="50" rx="8" fill="url(#card-grad)" stroke="#a855f7" stroke-width="1.5"/>
+    <text x="170" y="45" text-anchor="middle" class="node-text">Plan</text>
+
+    <!-- Step 3 Node -->
+    <rect x="260" y="15" width="90" height="50" rx="8" fill="url(#card-grad)" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="305" y="45" text-anchor="middle" class="node-text">Provision</text>
+  </g>
+
+  <!-- Top Pill Badge -->
+  <g transform="translate(60, 45)">
+    <rect width="260" height="32" rx="16" fill="#0f172a" stroke="#0284c7" stroke-width="1.5"/>
+    <circle cx="16" cy="16" r="6" fill="#38bdf8"/>
+    <text x="32" y="21" class="badge-text">CURATED IaC ECOSYSTEM 2026</text>
+  </g>
+
+  <!-- Main Title & Subtitle (Positioned prominently in Foreground) -->
+  <g transform="translate(60, 125)">
+    <text x="0" y="0" class="title">Awesome Infrastructure as Code (IaC)</text>
+    <text x="0" y="40" class="subtitle">The definitive directory of Cloud Provisioning, GitOps &amp; Policy Engines</text>
+  </g>
+
+  <!-- Platform Tech Chips / Tags -->
+  <g transform="translate(60, 220)">
+    <!-- Chip 1 -->
+    <rect x="0" y="0" width="110" height="34" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="55" y="21" text-anchor="middle" fill="#e2e8f0" font-family="sans-serif" font-size="13" font-weight="600">⚡ Terraform</text>
+    
+    <!-- Chip 2 -->
+    <rect x="122" y="0" width="105" height="34" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="174" y="21" text-anchor="middle" fill="#e2e8f0" font-family="sans-serif" font-size="13" font-weight="600">🧅 OpenTofu</text>
+
+    <!-- Chip 3 -->
+    <rect x="239" y="0" width="95" height="34" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="286" y="21" text-anchor="middle" fill="#e2e8f0" font-family="sans-serif" font-size="13" font-weight="600">🚀 Pulumi</text>
+
+    <!-- Chip 4 -->
+    <rect x="346" y="0" width="115" height="34" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="403" y="21" text-anchor="middle" fill="#e2e8f0" font-family="sans-serif" font-size="13" font-weight="600">☸️ Crossplane</text>
+
+    <!-- Chip 5 -->
+    <rect x="473" y="0" width="100" height="34" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="523" y="21" text-anchor="middle" fill="#e2e8f0" font-family="sans-serif" font-size="13" font-weight="600">🤖 Ansible</text>
+  </g>
+</svg>
